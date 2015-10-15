@@ -19,14 +19,14 @@ function User(){
 }
 var u = new User();
 io.on('connection',function(socket){
-    var user = u.getUser();
-    console.log(user + ' connected');
+    var userid = u.getUser();
+    console.log(userid + ' connected');
 
     socket.on('chat message',function(msg){
-        io.emit('chat message',user+' says: '+msg);
+        io.emit('chat message',userid + ' says: '+msg);
     });
     socket.on('disconnect',function(){
-        io.emit('disconnect',user + ' disconnected')
+        io.emit('disconnect',userid + ' disconnected')
 
     });
 });
